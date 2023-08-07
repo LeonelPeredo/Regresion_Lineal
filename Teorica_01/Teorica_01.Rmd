@@ -3,5 +3,3 @@ title: "Teorica_01"
 author: "Peredo Leonel"
 output: pdf_document
 ---
-
-SADasdasdgf
