@@ -4,25 +4,41 @@ author: "Peredo Leonel"
 output: pdf_document
 ---
 # Correlación
+## Ejercicio 1.
 
-1. El conjunto de datos bdims del paquete openintro que se habilita en el workspace del R con los comandos
-library(openintro)
-data(bdims, package = ‘‘openintro’’)
-El archivo consiste en medidas del di´ametro y circunferencia de distintas partes del cuerpo (21 variables),
-as´ı como edad, peso, altura y g´enero de 507 personas f´ısicamente activas. Para m´as detalle, tipear
-help(bdims, package = ‘‘openintro’’)
-a) Calcular las correlaciones muestrales entre las 21 variables que miden el di´ametro o circunferencia de
-las distintas partes del cuerpo. ¿Cu´antas correlaciones debe calcular? ¿Cu´al ser´ıa la mejor manera de
-exhibir esta informaci´on? ¿Est´an positiva o negativamente correlacionadas estas variables?
-b) Encontrar las dos variables con mayor correlaci´on entre s´ı. Realizar un scatter plot. ¿Le parece que este
-n´umero resume adecuadamente el v´ınculo entre ambas variables?
-c) Repetir con las de menor correlaci´on.
-d) Hacer un scatter plot de peso en el eje y y altura en el eje x y calcular la correlaci´on muestral o de
-Pearson. ¿Le parece que este n´umero resume adecuadamente el v´ınculo entre ambas variables?
-e) Hacer scatter plots de la variable bia di, que es la distancia biacromial (informalmente, la distancia
+El conjunto de datos `bdims` del paquete `openintro` que se habilita en el workspace del `R` con `data(bdims, package = "openintro")` consiste en medidas del diámetro y circunferencia de distintas partes del cuerpo (21 variables), así como edad, peso, altura y género de 507 personas físicamente activas. (Para más detalle, tipear `help(bdims, package = "openintro")`)
+
+a. Calcular las correlaciones muestrales entre las 21 variables que miden el diámetro o circunferencia de
+las distintas partes del cuerpo. ¿Cuántas correlaciones debe calcular? ¿Cuál sería la mejor manera de
+exhibir esta información? ¿Están positiva o negativamente correlacionadas estas variables?
+
+```{r ejercicio1a}
+data(bdims, package = "openintro")
+correlations <- cor(bdims[1:21])
+knitr::kable(correlations[,1:7])
+knitr::kable(correlations[,8:14])
+knitr::kable(correlations[,15:21])
+```
+
+Se calcularon $21^2 = 441$ correlaciones. La mejor forma de exhibir esta información es con una tabla. Todos los pares de variables tienen $r>0$ lo cual indica que están positivamente correlacionadas. 
+
+b. Encontrar las dos variables con mayor correlación entre sí. Realizar un scatter plot. ¿Le parece que este número resume adecuadamente el vínculo entre ambas variables?
+
+```{r}
+# Máximo de matriz correlations con la diagonal anulada
+maxcorrelation <- max(`diag<-`(correlations,0))
+colnames(correlations)[which(correlations == maxcorrelation)]
+correlations[332]
+```
+
+
+c. Repetir con las de menor correlación.
+d. Hacer un scatter plot de peso en el eje y y altura en el eje x y calcular la correlación muestral o de
+Pearson. ¿Le parece que este número resume adecuadamente el vínculo entre ambas variables?
+e. Hacer scatter plots de la variable `bia_di`, que es la distancia biacromial (informalmente, la distancia
 emtre los hombros) con las siguientes cuatro variables y calcular las correlaciones de a pares para ambas.
-Observar c´omo se comportan los scatterplots para distintos valores de la correlaci´on.
-age, la edad
-bii di, el ancho de la pelvis
-che de, la profundidad del pecho
-wri di, la circunferencia de la mu˜neca
+Observar cómo se comportan los scatterplots para distintos valores de la correlación.
+- `age`, la edad
+- `bii_di`, el ancho de la pelvis
+- `che_de`, la profundidad del pecho
+- `wri_di`, la circunferencia de la muñeca
