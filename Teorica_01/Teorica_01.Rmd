@@ -208,5 +208,5 @@ que los errores tengan esperanza cero s´ı es trivial.
 Verificar que los supuestos se cumplan para un conjunto de datos ser´a uno
 de los objetivos que atacaremos m´as adelante en la materia.
 
-FORMULAS DIAPO 32
+FORMULAS DIAPO 32, 33 y 34
 
