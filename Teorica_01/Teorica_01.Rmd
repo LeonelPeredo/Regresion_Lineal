@@ -3,45 +3,42 @@ title: "Teórica 01"
 author: "Peredo Leonel"
 output: pdf_document
 ---
-En muchas disciplinas cient´ıficas interesa saber c´omo se relacionan
-distintas variables entre s´ı. Una de las herramientas principales que tiene la
-estad´ıstica para hacer eso es la regresi´on
-El modelo de regresi´on lineal es un m´etodo conceptualmente simple para
-investigar la relaci´on entre dos o m´as variables. Esta relaci´on se expresa en
-la forma de una ecuaci´on o un modelo que conecta una variable respuesta
+En muchas disciplinas científicas interesa saber cómo se relacionan
+distintas variables entre sí. Una de las herramientas principales que 
+tiene la estadística para hacer eso es la regresión.\
+El modelo de regresión lineal es un método conceptualmente simple para
+investigar la relación entre dos o más variables. Esta relación se expresa en
+la forma de una ecuación o un modelo que conecta una variable respuesta
 o variable dependiente (continua) y una o muchas variables explicativas o
-covariables. Es una t´ecnica cl´asica y muy utilizada.
-La teor´ıa de modelos lineales es un caso especial de la teor´ıa m´as
-general que cubre modelos m´as flexibles y realistas. Precisamente
+covariables. Es una técnica clásica y muy utilizada.\
+La teoría de modelos lineales es un caso especial de la teoría más
+general que cubre modelos más flexibles y realistas. Precisamente
 porque es un caso tan especial, permite muchos atajos
-simplificadores, que pueden facilitan el aprendizaje, especialmente sin
-matem´aticas avanzadas.
-2 Debido a que los modelos lineales son tan simples, han sido y son
+simplificadores, que pueden facilitar el aprendizaje, especialmente sin
+matemáticas avanzadas.\
+Debido a que los modelos lineales son tan simples, han sido y son
 tremendamente utilizados. Esto significa que muchas aplicaciones de
-la estad´ıstica se ha realizado sobre modelos lineales. Tambi´en significa
-que muchos de los consumidores de estad´ıstica esperan modelos
-lineales o comparar´an los modelos obtenidos con modelos lineales. Por
-tanto, es importante entender a fondo tanto c´omo funcionan como
-cu´ales son sus limitaciones.
-La regresi´on lineal se ocupa de investigar la relaci´on entre dos o m´as
-variables continuas.
-Comenzaremos tratando de describir el v´ınculo entre dos variables
+la estadística se ha realizado sobre modelos lineales. También significa
+que muchos de los consumidores de estadística esperan modelos
+lineales o compararán los modelos obtenidos con modelos lineales. Por
+tanto, es importante entender a fondo tanto cómo funcionan, como
+cuáles son sus limitaciones.\
+La regresión lineal se ocupa de investigar la relación entre dos o más
+variables continuas.\
+Comenzaremos tratando de describir el vínculo entre dos variables
 aleatorias continuas. Medimos ambas variables en la misma unidad: puede
-tratarse de un individuo, un pa´ıs, un animal, una escuela, etc.
-Ejemplo Se miden en el a˜no 2015, para 187 pa´ıses:
-Y : Expectativa de vida: El n´umero promedio de a˜nos que un ni˜no reci´en
-nacido espera vivir, si los patrones de mortalidad no cambiaran (life)
-X : Mortalidad 0 a 5: El n´umero de ni˜nos de 0 a 5 a˜nos que mueren en
-un a˜no, por cada 1000 ni˜nos vivos (child)
+tratarse de un individuo, un país, un animal, una escuela, etc.\
+*Ejemplo:* Se miden en el año 2015, para 187 países:\
+$Y$: Expectativa de vida: Número promedio de años que un niño recién
+nacido espera vivir, si los patrones de mortalidad no cambiaran (`life`)\
+$X$: Mortalidad infantil: Número de niños de 0 a 5 años que mueren en
+un año, por cada 1000 niños vivos (`child`)
 
+![Expectativa de vida en función de Mortalidad en 187 países, año 2015]("./images/Grafico01.png")
 
-
-![Scatterplot]("./images/Grafico01.png")
-
-En un scatter plot se ubican los resultados de una variable (X) en el eje
-horizontal y los de la otra variable (Y ) en el eje vertical. Cada punto en el
-gr´afico representa una observaci´on (Xi
-, Yi).
+En un scatter plot se ubican los resultados de una variable ($X$) en el eje
+horizontal y los de la otra variable ($Y$) en el eje vertical. Cada punto en el
+gráfico representa una observación $(X_i, Yi)$.
 Se pierde la informaci´on del individuo (pa´ıs) Con este gr´afico podemos
 determinar si existe alg´un tipo de relaci´on entre X e Y .
 En este caso vemos que a medida que aumenta la mortalidad infantil,
