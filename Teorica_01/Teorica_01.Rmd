@@ -1,5 +1,5 @@
 ---
-title: "Teorica_01"
+title: "Teórica 01"
 author: "Peredo Leonel"
 output: pdf_document
 ---
