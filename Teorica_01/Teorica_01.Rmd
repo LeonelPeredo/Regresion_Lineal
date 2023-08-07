@@ -3,3 +3,210 @@ title: "Teórica 01"
 author: "Peredo Leonel"
 output: pdf_document
 ---
+En muchas disciplinas cient´ıficas interesa saber c´omo se relacionan
+distintas variables entre s´ı. Una de las herramientas principales que tiene la
+estad´ıstica para hacer eso es la regresi´on
+El modelo de regresi´on lineal es un m´etodo conceptualmente simple para
+investigar la relaci´on entre dos o m´as variables. Esta relaci´on se expresa en
+la forma de una ecuaci´on o un modelo que conecta una variable respuesta
+o variable dependiente (continua) y una o muchas variables explicativas o
+covariables. Es una t´ecnica cl´asica y muy utilizada.
+La teor´ıa de modelos lineales es un caso especial de la teor´ıa m´as
+general que cubre modelos m´as flexibles y realistas. Precisamente
+porque es un caso tan especial, permite muchos atajos
+simplificadores, que pueden facilitan el aprendizaje, especialmente sin
+matem´aticas avanzadas.
+2 Debido a que los modelos lineales son tan simples, han sido y son
+tremendamente utilizados. Esto significa que muchas aplicaciones de
+la estad´ıstica se ha realizado sobre modelos lineales. Tambi´en significa
+que muchos de los consumidores de estad´ıstica esperan modelos
+lineales o comparar´an los modelos obtenidos con modelos lineales. Por
+tanto, es importante entender a fondo tanto c´omo funcionan como
+cu´ales son sus limitaciones.
+La regresi´on lineal se ocupa de investigar la relaci´on entre dos o m´as
+variables continuas.
+Comenzaremos tratando de describir el v´ınculo entre dos variables
+aleatorias continuas. Medimos ambas variables en la misma unidad: puede
+tratarse de un individuo, un pa´ıs, un animal, una escuela, etc.
+Ejemplo Se miden en el a˜no 2015, para 187 pa´ıses:
+Y : Expectativa de vida: El n´umero promedio de a˜nos que un ni˜no reci´en
+nacido espera vivir, si los patrones de mortalidad no cambiaran (life)
+X : Mortalidad 0 a 5: El n´umero de ni˜nos de 0 a 5 a˜nos que mueren en
+un a˜no, por cada 1000 ni˜nos vivos (child)
+
+
+
+![Scatterplot]("./images/Grafico01.png")
+
+En un scatter plot se ubican los resultados de una variable (X) en el eje
+horizontal y los de la otra variable (Y ) en el eje vertical. Cada punto en el
+gr´afico representa una observaci´on (Xi
+, Yi).
+Se pierde la informaci´on del individuo (pa´ıs) Con este gr´afico podemos
+determinar si existe alg´un tipo de relaci´on entre X e Y .
+En este caso vemos que a medida que aumenta la mortalidad infantil,
+decrece la esperanza de vida. Queremos modelar la relaci´on entre ambas
+variables. El objetivo es tratar de explicar la esperanza de vida a partir de
+la mortalidad infantil.
+Otro ejemplo: Pearson-Lee data.
+Karl Pearson organiz´o la recolecci´on de datos de 1100 familias en Inglaterra
+en el per´ıodo 1893 a 1898. Este conjunto de datos en particular: Heights
+en el paquete alr4 de R da la altura de madres e hijas (en pulgadas), con
+hasta dos hijas por madre. Todas las hijas tienen 18 a˜nos o m´as, y todas
+las madres son menores de 65 a˜nos. En la fuente los datos aparecen
+redondeados a la pulgada m´as cercana. En la librer´ıa se les agrega un error
+de redondeo para que el gr´afico no sea discreto. Mostramos datos en cm.
+
+![Scatterplot]("./images/Grafico02.png")
+
+Ejemplo con más variables:
+Para n = 193 pa´ıses, medimos en 2015 las siguientes variables:
+Y = life es la esperanza de vida al nacer (en a˜nos)
+X1 = income: Producto Bruto Interno, per c´apita (en USD)
+X2 = child Tasa de Mortalidad de 0 a 5 a˜nos, por cada mil ni˜nos
+nacidos vivos en el a˜no.
+X3 = dtp3: porcentaje de ni˜nos de un a˜no inmunizados con tres dosis
+de vacuna contra la difteria, t´etanos y pertussi (DTP3)
+X4 = school: n´umero de a˜nos de escolaridad promedio en hombres de
+25–34 a˜nos.
+X5 = status: grado de desarrollo del pa´ıs (”developed” o
+”not.developed”)
+El objetivo es explicar a Y ¿C´omo lo visualizamos?
+
+![Scatterplot]("./images/Grafico03.png")
+
+# Correlación de Pearson
+
+La correlaci´on (poblacional) de un vector aleatorio (X, Y ):
+
+FORMULA
+
+Correlación muestral:
+
+FORMULA
+
+FORMULAS DIAPO 14
+
+# Interpretación de la correlación
+
+![Scatterplot]("./images/Grafico04.png")
+![Scatterplot]("./images/Grafico05.png")
+![Scatterplot]("./images/Grafico06.png")
+![Scatterplot]("./images/Grafico07.png")
+![Scatterplot]("./images/Grafico08.png")
+
+# Propiedades del coeficiente de correlación
+
+1. -1 leq r leq 1.
+2. El valor absoluto de r, |r| mide la fuerza de la asociaci´on lineal entre
+X e Y , a mayor valor absoluto, hay una asociaci´on lineal m´as fuerte
+entre X e Y .
+3. El caso particular r = 0 indica que no hay asociaci´on lineal entre X e
+Y .
+4. El caso r = 1 indica asociaci´on lineal perfecta. O sea que los puntos
+est´an ubicados sobre una recta de pendiente (o inclinaci´on) positiva.
+5. En el caso r = -1 tenemos a los puntos ubicados sobre una recta de
+pendiente negativa (o sea, decreciente).
+6. El signo de r indica que hay asociaci´on positiva entre las variables (si
+r > 0); o asociaci´on negativa entre ellas (si r < 0).
+7. r = 0,90 indica que los puntos est´an ubicados muy cerca de una recta
+creciente, r = 0,80 indica que los puntos est´an cerca, pero no tanto,
+de una recta creciente.
+8. r no depende de las unidades en que son medidas las variables
+(mil´ımetros, cent´ımetros, metros o kil´ometros, por ejemplo) .
+9. Los roles de X e Y son sim´etricos para el c´alculo de r.
+10. Cuidado: el coeficiente de correlaci´on de Pearson es muy sensible a
+observaciones at´ıpicas. Hay que hacer siempre un scatter plot de los
+datos antes de resumirlos con r.
+
+La temperatura corporal de mam´ıferos y p´ajaros tiende a fluctuar durante
+el d´ıa seg´un un ritmo circadiano regular. En un estudio 1
+se registra la
+temperatura corporal de 10 ardillas ant´ılopes cada 6 minutos a lo largo de
+10 d´ıas consecutivos en condiciones de laboratorio. Elegimos una ardilla y
+promediamos las temperaturas de los 10 d´ıas para obtener un conjunto de
+datos de 24 x 10 observaciones. Los autores trataban de contestar a la
+pregunta:
+¿Hay una asociaci´on entre la hora del d´ıa y la temperatura corporal?
+Para contestarla, tenemos dos estrategias.
+Calcular la correlaci´on entre la hora del d´ıa y la temperatura corporal
+de la ardilla
+Graficar ambas variables: horario y temperatura en un scatter plot
+
+Xi = horario de la i´esima medici´on
+Yi = temperatura promedio a lo largo de 10 d´ıas de las 10 mediciones
+realizadas en el horario X
+
+Calculamos la correlaci´on muestral:
+`cor(horario, temperatura6)`
+`[1] -0.05863851`
+Parece no haber relaci´on entre ambas. ¿Eso mide la correlaci´on? Casi no
+hay relaci´on lineal entre ambas variables.
+
+![Scatterplot]("./images/Grafico09.png")
+
+Una
+correlaci´on cercana a cero no significa (necesariamente) que las dos variables no
+est´an asociadas: la correlaci´on mide s´olo la fuerza de una relaci´on lineal
+
+En el sitio del Servicio Meteorol´ogico Nacional pueden bajarse los datos de
+temperaturas m´aximas y m´ınimas diarias de los distintos observatorios
+ubicados en el pa´ıs. 2 Elegimos 5 localidades, queremos ver c´omo se
+relacionan entre s´ı las temperaturas m´ınimas del mismo d´ıa. As´ı tenemos
+un vector aleatorio (Ai
+, Ei
+, Bi
+, Pi
+,Ui), con 1 LEQ i LEQ n = 365
+Ai = temperatura m´ınima del d´ıa i en Aeroparque
+Ei = temperatura m´ınima del d´ıa i en Ezeiza
+Bi = temperatura m´ınima del d´ıa i en Bariloche
+Pi = temperatura m´ınima del d´ıa i en Posadas
+Ui = temperatura m´ınima del d´ıa i en Ushuaia
+
+![Scatterplot]("./images/Grafico10.png")
+![Scatterplot]("./images/Grafico11.png")
+![Scatterplot]("./images/Grafico12.png")
+
+La teor´ıa de modelos lineales es un caso especial de la teor´ıa m´as
+general que cubre modelos m´as flexibles y realistas. Precisamente
+porque es un caso tan especial, permite muchos atajos
+simplificadores, que pueden facilitan el aprendizaje, especialmente sin
+matem´aticas avanzadas.
+2 Debido a que los modelos lineales son tan simples, han sido y son
+tremendamente utilizados. Esto significa que muchas aplicaciones de
+la estad´ıstica se ha realizado sobre modelos lineales. Tambi´en significa
+que muchos de los consumidores de estad´ıstica esperan modelos
+lineales o comparar´an los modelos obtenidos con modelos lineales. Por
+tanto, es importante entender a fondo tanto c´omo funcionan como
+cu´ales son sus limitaciones.
+
+El modelo de regresi´on lineal es un modelo para el v´ınculo de dos variables
+aleatorias que denominaremos X = variable predictora o covariable e Y =
+variable dependiente o de respuesta. El modelo lineal (simple pues s´olo
+vincula una variable predictora con Y ) asume que
+1 La distribuci´on de X no est´a especificada, incluso puede ser
+determin´ıstica.
+2 Proponemos el siguiente modelo para las variables:
+FORMULA
+donde E es el t´ermino del error.
+3 Asumimos que la variable aleatoria error E tiene esperanza 0, varianza
+constante desconocida que llamaremos SIGMA
+2
+, no est´a correlacionado con
+X y no est´a correlacionado con los errores de otras observaciones.
+En el modelo (2) los n´umeros BETA0 y BETA1 son constantes desconocidas que se
+denominan par´ametros del modelo, o coeficientes de la ecuaci´on.
+Los par´ametros se denominan
+BETA0 = ordenada al origen
+BETA1 = pendiente.
+El supuesto de la relaci´on funcional entre X e Y sea lineal es no trivial, ya
+dijimos que muchas variables no lo cumplen. El requisito de que el error
+tenga varianza constante, se lo suele llamar homoscedasticidad, y tampoco
+es no trivial. Lo mismo pasa con las no correlaciones. Pero el supuesto de
+que los errores tengan esperanza cero s´ı es trivial.
+Verificar que los supuestos se cumplan para un conjunto de datos ser´a uno
+de los objetivos que atacaremos m´as adelante en la materia.
+
+FORMULAS DIAPO 32
+
