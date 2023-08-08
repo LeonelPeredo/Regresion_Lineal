@@ -20,7 +20,27 @@ knitr::kable(correlations[,8:14])
 knitr::kable(correlations[,15:21])
 ```
 
-Se calcularon $21^2 = 441$ correlaciones. La mejor forma de exhibir esta información es con una tabla. Todos los pares de variables tienen $r>0$ lo cual indica que están positivamente correlacionadas. 
+Se calcularon $21^2 = 441$ correlaciones. La mejor forma de exhibir esta información es con una tabla. Todos los pares de variables tienen $r>0$ lo cual indica que están positivamente correlacionadas. Otra forma más gráfica y menos ruidosa es con un gráfico de este estilo:
+```{r, echo =FALSE, results='hide'}
+library(corrplot)
+```
+
+```{r}
+corrplot.mixed(
+  correlations,
+  lower="circle",
+  upper="circle",
+  tl.pos = c("lt"),
+  diag = c("n", "l", "u"),
+  bg = "white",
+  addgrid.col = "grey",
+  lower.col = NULL,
+  upper.col = NULL,
+  plotCI = c("n", "square", "circle", "rect"),
+  mar = c(0, 0, 0, 0),
+  )
+```
+
 
 b. Encontrar las dos variables con mayor correlación entre sí. Realizar un scatter plot. ¿Le parece que este número resume adecuadamente el vínculo entre ambas variables?
 
@@ -42,3 +62,56 @@ Observar cómo se comportan los scatterplots para distintos valores de la correl
 - `bii_di`, el ancho de la pelvis
 - `che_de`, la profundidad del pecho
 - `wri_di`, la circunferencia de la muñeca
+
+
+## Ejercicio 2
+Sean $(X_i, Y_i)_{1\leq i\leq n}$ observaciones bivariadas, la covarianza muestral entre $X$ e $Y$, basada en las observaciones se define por
+$$
+\widehat{\text{cov}}((X_1,Y_1),...,(X_n,Y_n))=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)
+$$
+Por simplicidad en vez de escribir $\widehat{\text{cov}}((X_1,Y_1),...,(X_n,Y_n))$ a veces escribiremos $\widehat{\text{cov}}(X_i,Y_i)$
+
+a. Sean $a,b\in\mathbb{R}$ constantes.\
+\
+i. Definimos $X_i^*=X_i+a$, con $i=1,...,n$. Probar que $\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$
+
+Por definición, tenemos que 
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i^*-\bar X^*)(Y_i-\bar Y)
+$$
+Reemplazando según $X_i^*=X_i+a$, primero calculamos $\bar X_i^*$:
+$$
+\bar X_i^* = \frac{1}{n}\sum_{i=1}^nX_i^* = \frac{1}{n}\sum_{i=1}^n(X_i+a)=\frac{1}{n}\sum_{i=1}^nX_i+\frac{1}{n}\sum_{i=1}^na=\bar X + \frac{na}{n}=\bar X +a
+$$
+
+Por lo tanto,
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i+a-(\bar X + a))(Y_i-\bar Y) = \frac{1}{n-1}\sum_{i=1}^n(X_i+a-\bar X - a)(Y_i-\bar Y)
+$$
+Es decir que
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X )(Y_i-\bar Y)=\widehat{\text{cov}}(X_i,Y_i)
+$$
+como se quería probar.
+
+
+ii. Definimos $X_i^*=bX_i+a$, con $i=1,...,n$. Probar que $\widehat{\text{cov}}(X_i^*,Y_i)=b\cdot\widehat{\text{cov}}(X_i,Y_i)$
+
+Por definición, tenemos que 
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i^*-\bar X^*)(Y_i-\bar Y)
+$$
+Reemplazando según $X_i^*=bX_i+a$, primero calculamos $\bar X_i^*$:
+$$
+\bar X_i^* = \frac{1}{n}\sum_{i=1}^nX_i^* = \frac{1}{n}\sum_{i=1}^n(bX_i+a)=\frac{b}{n}\sum_{i=1}^nX_i+\frac{1}{n}\sum_{i=1}^na=b\bar X + \frac{na}{n}=b\bar X +a
+$$
+
+Por lo tanto,
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(bX_i+a-(b\bar X + a))(Y_i-\bar Y) = \frac{1}{n-1}\sum_{i=1}^n(bX_i+a-b\bar X - a)(Y_i-\bar Y)
+$$
+Es decir que
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^nb(X_i-\bar X )(Y_i-\bar Y)=b\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X )(Y_i-\bar Y)=b\cdot\widehat{\text{cov}}(X_i,Y_i)
+$$
+como se quería probar.
