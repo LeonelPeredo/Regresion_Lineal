@@ -71,8 +71,7 @@ $$
 $$
 Por simplicidad en vez de escribir $\widehat{\text{cov}}((X_1,Y_1),...,(X_n,Y_n))$ a veces escribiremos $\widehat{\text{cov}}(X_i,Y_i)$
 
-a. Sean $a,b\in\mathbb{R}$ constantes.\
-\
+a. Sean $a,b\in\mathbb{R}$ constantes.
 i. Definimos $X_i^*=X_i+a$, con $i=1,...,n$. Probar que $\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$
 
 Por definición, tenemos que 
@@ -115,3 +114,29 @@ $$
 \widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^nb(X_i-\bar X )(Y_i-\bar Y)=b\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X )(Y_i-\bar Y)=b\cdot\widehat{\text{cov}}(X_i,Y_i)
 $$
 como se quería probar.
+
+b. Sean $X_i^* = X_i - \bar X$, y $Y_i^*=Y_i-\bar Y$, con $i=1,...,n$. Probar que $\widehat{\text{cov}}(X_i^*,Y_i^*)=\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$
+
+Por definición,
+$$
+\widehat{\text{cov}}(X_i^*,Y_i^*)=\frac{1}{n-1}\sum_{i=1}^n(X_i^*-\bar X^*)(Y_i^*-\bar Y^*)
+$$
+Primero calculamos $\bar Y^*$:
+$$
+\bar Y^* = \frac{1}{n}\sum_{i=1}^n(Y_i - \bar Y)=\frac{1}{n}\sum_{i=1}^nY_i - \frac{1}{n}\sum_{i=1}^n\bar Y=\bar Y-\frac{n\bar Y}{n}=0
+$$
+Luego, reemplazando,
+$$
+\widehat{\text{cov}}(X_i^*,Y_i^*)=\frac{1}{n-1}\sum_{i=1}^n(X_i^*-\bar X^*)(Y_i-\bar Y-0)=\frac{1}{n-1}\sum_{i=1}^n(X_i^*-\bar X^*)(Y_i-\bar Y)=\widehat{\text{cov}}(X_i^*,Y_i)
+$$
+Ahora calculamos $\bar X^*$:
+$$
+\bar X^* = \frac{1}{n}\sum_{i=1}^n(X_i - \bar X)=\frac{1}{n}\sum_{i=1}^nX_i - \frac{1}{n}\sum_{i=1}^n\bar X=\bar X-\frac{n\bar X}{n}=0
+$$
+Luego, reemplazando,
+$$
+\widehat{\text{cov}}(X_i^*,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X-0)(Y_i-\bar Y)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)=\widehat{\text{cov}}(X_i,Y_i)
+$$
+Por lo tanto, por propiedad transitiva, $\widehat{\text{cov}}(X_i^*,Y_i^*)=\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$, como se quería probar.
+
+
