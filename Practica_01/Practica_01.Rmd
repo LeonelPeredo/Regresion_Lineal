@@ -176,3 +176,28 @@ Por definición,
 $$
 \widehat{\text{cov}}(X_i,X_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(X_i-\bar X)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2=S_X^2
 $$
+
+## Ejercicio 3
+Sean $(X_i, Y_i)$, con $1\leq i \leq n$ observaciones bivariadas, el coeficiente de corelación muestral o coeficiente de correlación
+de Pearson entre $X$ e $Y$ basado en las observaciones se define por
+$$
+\rho((X_i,Y_i,...,(X_n,Y_n))=\frac{\widehat{\text{cov}}(X_i,Y_i)}{S_XS_Y}=\frac{\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2}\sqrt{\frac{1}{n-1}\sum_{i=1}^n(Y_i-\bar Y)^2}}
+$$
+
+y el denominador es el producto de los desvíos muestrales de cada muestra.
+
+a. Sean $a,b\in\mathbb{R}$ constantes,
+i. Definimos $X_i^*=X_i+a$, con $i=1,...,n$. Probar que $\widehat{\rho}(X_i^*,Y_i)=\widehat{\rho}(X_i,Y_i)$.
+
+Por definición
+$$
+\rho(X_i^*,Y_i)=\frac{\widehat{\text{cov}}(X_i^*,Y_i)}{S_{X^*}S_Y}
+$$
+
+Ya se probó que siendo $X_i^*=X_i+a$, entonces $\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$. Además $S_{X^*}^2=\widehat{\text{cov}}(X_i^*,X_i^*)$. Se probó también que $\widehat{\text{cov}}(X_i^*,Y_i^*)=\widehat{\text{cov}}(X_i,Y_i)$. Con el mismo razonamiento se llega a $\widehat{\text{cov}}(X_i^*,X_i^*)=\widehat{\text{cov}}(X_i,X_i)$, es decir $S_{X^*}^2=S_X^2$. Luego, volviendo,
+
+$$
+\rho(X_i^*,Y_i)=\frac{\widehat{\text{cov}}(X_i^*,Y_i)}{S_{X^*}S_Y}=\frac{\widehat{\text{cov}}(X_i,Y_i)}{S_XS_Y}=\rho(X_i,Y_i)
+$$
+, como se quería probar.
+
