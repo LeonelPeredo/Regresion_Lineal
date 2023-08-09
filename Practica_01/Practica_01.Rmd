@@ -171,3 +171,8 @@ $$
 $$
 , como se quería probar.
 
+e. Probar que $\widehat{\text{cov}}(X_i,X_i)=S_X^2$, donde $S_X^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X )^2$ es la varianza muestral de las Xs.
+Por definición,
+$$
+\widehat{\text{cov}}(X_i,X_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(X_i-\bar X)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2=S_X^2
+$$
