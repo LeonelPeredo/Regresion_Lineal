@@ -139,4 +139,35 @@ $$
 $$
 Por lo tanto, por propiedad transitiva, $\widehat{\text{cov}}(X_i^*,Y_i^*)=\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$, como se quería probar.
 
+c. Probar que vale $ c$
+
+d. Probar que la covarianza muestral se puede escribir como $\widehat{\text{cov}}(X_i,Y_i)=\frac{1}{n-1}\Bigg[\sum_{i=1}^nX_iY_i-n\bar X\bar Y)\Bigg]$ 
+
+Partiendo de la definición, tenemos que
+$$
+\widehat{\text{cov}}(X_i,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)
+$$
+Haciendo distributiva,
+$$
+\widehat{\text{cov}}(X_i,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_iY_i-\bar XY_i-X_i\bar Y+\bar X\bar Y)=\frac{1}{n-1}\Bigg[\sum_{i=1}^nX_iY_i-\sum_{i=1}^n\bar XY_i-\sum_{i=1}^nX_i\bar Y+\sum_{i=1}^n\bar X\bar Y\Bigg]
+$$
+Notemos que
+$$
+\sum_{i=1}^n\bar XY_i = \bar X \sum_{i=1}^nY_i = \bar X \cdot n \bar Y = n\bar X\bar Y
+$$
+Análogamente,
+$$
+\sum_{i=1}^nX_i\bar Y = \bar Y \sum_{i=1}^nX_i = \bar Y \cdot n \bar X = n\bar X\bar Y
+$$
+
+Además, 
+$$
+\sum_{i=1}^n\bar X  \bar Y = n\bar X \bar Y
+$$
+
+Entonces, volviendo,
+$$
+\widehat{\text{cov}}(X_i,Y_i)=\frac{1}{n-1}\Bigg[\sum_{i=1}^nX_iY_i-n\bar X \bar Y-n\bar X \bar Y+n\bar X \bar Y\Bigg]=\frac{1}{n-1}\Bigg[\sum_{i=1}^nX_iY_i-n\bar X \bar Y\Bigg]
+$$
+, como se quería probar.
 
