@@ -139,7 +139,7 @@ $$
 $$
 Por lo tanto, por propiedad transitiva, $\widehat{\text{cov}}(X_i^*,Y_i^*)=\widehat{\text{cov}}(X_i^*,Y_i)=\widehat{\text{cov}}(X_i,Y_i)$, como se quería probar.
 
-c. Probar que vale $ c$
+c. Probar que vale $c$
 
 d. Probar que la covarianza muestral se puede escribir como $\widehat{\text{cov}}(X_i,Y_i)=\frac{1}{n-1}\Bigg[\sum_{i=1}^nX_iY_i-n\bar X\bar Y)\Bigg]$ 
 
