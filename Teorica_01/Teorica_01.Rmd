@@ -33,102 +33,101 @@ $Y$: Expectativa de vida: Número promedio de años que un niño recién
 nacido espera vivir, si los patrones de mortalidad no cambiaran (`life`)\
 $X$: Mortalidad infantil: Número de niños de 0 a 5 años que mueren en
 un año, por cada 1000 niños vivos (`child`)
+La notación matemática para las observaciones será $(X_i, Y_i)$, donde
+$X_i$ = child del país i-ésimo
+$Y_i$ = life del país i-ésimo, con $1\leq i \leq n = 187$
+
 
 ![Expectativa de vida en función de Mortalidad en 187 países, año 2015]("./images/Grafico01.png")
 
 En un scatter plot se ubican los resultados de una variable ($X$) en el eje
-horizontal y los de la otra variable ($Y$) en el eje vertical. Cada punto en el
-gráfico representa una observación $(X_i, Yi)$.
-Se pierde la informaci´on del individuo (pa´ıs) Con este gr´afico podemos
-determinar si existe alg´un tipo de relaci´on entre X e Y .
+horizontal y los de la otra variable ($Y$) en el eje vertical. Cada punto en el gráfico representa una observación $(X_i, Yi)$.\
+Se pierde la información del individuo (país). Con este gráfico podemos
+determinar si existe algún tipo de relación entre $X$ e $Y$.\
 En este caso vemos que a medida que aumenta la mortalidad infantil,
-decrece la esperanza de vida. Queremos modelar la relaci´on entre ambas
-variables. El objetivo es tratar de explicar la esperanza de vida a partir de
-la mortalidad infantil.
-Otro ejemplo: Pearson-Lee data.
-Karl Pearson organiz´o la recolecci´on de datos de 1100 familias en Inglaterra
-en el per´ıodo 1893 a 1898. Este conjunto de datos en particular: Heights
-en el paquete alr4 de R da la altura de madres e hijas (en pulgadas), con
-hasta dos hijas por madre. Todas las hijas tienen 18 a˜nos o m´as, y todas
-las madres son menores de 65 a˜nos. En la fuente los datos aparecen
-redondeados a la pulgada m´as cercana. En la librer´ıa se les agrega un error
-de redondeo para que el gr´afico no sea discreto. Mostramos datos en cm.
+decrece la esperanza de vida. Queremos modelar la relación entre ambas
+variables. El objetivo es tratar de explicar la esperanza de vida a partir de la mortalidad infantil.\
+**Otro ejemplo**: Pearson-Lee data.\
+Karl Pearson organizó la recolección de datos de 1100 familias en Inglaterra en el período 1893 a 1898. El conjunto de datos `Heights`, en el paquete `alr4` de `R` da la altura de madres e hijas (en pulgadas), con
+hasta dos hijas por madre. Todas las hijas tienen 18 años o más, y todas
+las madres son menores de 65 años. En la fuente los datos aparecen
+redondeados a la pulgada más cercana. En la librería se les agrega un error
+de redondeo para que el gráfico no sea discreto. Mostramos datos en cm.
 
-![Scatterplot]("./images/Grafico02.png")
+![Altura de la hija (cm) en función de la altura de la madre (cm)]("./images/Grafico02.png")
 
-Ejemplo con más variables:
-Para n = 193 pa´ıses, medimos en 2015 las siguientes variables:
-Y = life es la esperanza de vida al nacer (en a˜nos)
-X1 = income: Producto Bruto Interno, per c´apita (en USD)
-X2 = child Tasa de Mortalidad de 0 a 5 a˜nos, por cada mil ni˜nos
-nacidos vivos en el a˜no.
-X3 = dtp3: porcentaje de ni˜nos de un a˜no inmunizados con tres dosis
-de vacuna contra la difteria, t´etanos y pertussi (DTP3)
-X4 = school: n´umero de a˜nos de escolaridad promedio en hombres de
-25–34 a˜nos.
-X5 = status: grado de desarrollo del pa´ıs (”developed” o
+**Ejemplo con más variables:**
+Para $n = 193$ pa´ıses, medimos en $2015$ las siguientes variables:
+$Y$ = `life` es la esperanza de vida al nacer (en años)
+$X1$ = `income`: Producto Bruto Interno, per cápita (en USD)
+$X2$ = `child` Tasa de Mortalidad de 0 a 5 años, por cada mil niños
+nacidos vivos en el año.
+$X3$ = `dtp3`: porcentaje de niños de un año inmunizados con tres dosis
+de vacuna contra la difteria, tétanos y pertussi (DTP3)
+$X4$ = `school`: n´umero de años de escolaridad promedio en hombres de
+$25–34$ años.
+$X5$ = `status`: grado de desarrollo del país (”developed” o
 ”not.developed”)
-El objetivo es explicar a Y ¿C´omo lo visualizamos?
+El objetivo es explicar a $Y$ ¿Cómo lo visualizamos?
 
-![Scatterplot]("./images/Grafico03.png")
+![Gráficos de life en función de distintas variables.]("./images/Grafico03.png")
 
 # Correlación de Pearson
 
-La correlaci´on (poblacional) de un vector aleatorio (X, Y ):
+Correlación poblacional de un vector aleatorio $(X,Y)$:
 
-FORMULA
-
+$$
+\rho(X,Y)=\frac{\mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y)))}{\sqrt{\mathbb{V}(X)\mathbb{V}(Y)}}
+$$
 Correlación muestral:
 
-FORMULA
-
-FORMULAS DIAPO 14
+$$
+r=\hat\rho(X,Y)=\frac{\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2}\sqrt{\frac{1}{n-1}\sum_{i=1}^n(Y_i-\bar Y)^2}}=\frac{\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)}{S_XS_Y}
+$$
+A su vez, el numerador se denomina covarianza muestral de $X$ y de $Y$. Entonces $\widehat{cov}(X_i,Y_i)=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)$, y el denominador es el producto de los desvíos muestrales de cada muestra por separado $S_X$ y $S_Y$. Si bien el numerador puede ser positivo o negativo, el denominador es siempre positivo. Entonces el signo de $r$ está determinado por la covarianza muestral.
 
 # Interpretación de la correlación
-
-![Scatterplot]("./images/Grafico04.png")
-![Scatterplot]("./images/Grafico05.png")
-![Scatterplot]("./images/Grafico06.png")
-![Scatterplot]("./images/Grafico07.png")
-![Scatterplot]("./images/Grafico08.png")
+Supongamos que tenemos este gráfico y queremos analizarlo:\
+![Scatterplot 1]("./images/Grafico04.png")\
+Le agregamos una línea horizontal a nivel de $\bar Y$, y una vertical a nivel de $\bar X$.\
+![Scatterplot2]("./images/Grafico05.png")\
+Notemos que la mayoría de los datos están en los cuadrantes rosas\
+![Scatterplot3]("./images/Grafico06.png")\
+Que a su vez, si lo pensamos como signos respecto a las medias como puntos de corte, se verían así.\
+![Scatterplot4]("./images/Grafico07.png")\
+La covarianza positiva implica que la mayoría de los puntos están en cuadrantes cuyo producto es positivo.\
+![Scatterplot5]("./images/Grafico08.png")
 
 # Propiedades del coeficiente de correlación
 
-1. -1 leq r leq 1.
-2. El valor absoluto de r, |r| mide la fuerza de la asociaci´on lineal entre
-X e Y , a mayor valor absoluto, hay una asociaci´on lineal m´as fuerte
-entre X e Y .
-3. El caso particular r = 0 indica que no hay asociaci´on lineal entre X e
-Y .
-4. El caso r = 1 indica asociaci´on lineal perfecta. O sea que los puntos
-est´an ubicados sobre una recta de pendiente (o inclinaci´on) positiva.
-5. En el caso r = -1 tenemos a los puntos ubicados sobre una recta de
+1. $-1 \leq r \leq 1$.
+2. El valor absoluto de $r$, $|r|$, mide la fuerza de la asociación lineal entre $X$ e $Y$, a mayor valor absoluto, hay una asociación lineal más fuerte.
+3. El caso particular $r = 0$ indica que no hay asociación lineal entre $X$ e $Y$.
+4. El caso $r = 1$ indica asociación lineal perfecta. O sea que los puntos
+están ubicados sobre una recta de pendiente (o inclinación) positiva.
+5. En el caso $r = -1$ tenemos a los puntos ubicados sobre una recta de
 pendiente negativa (o sea, decreciente).
-6. El signo de r indica que hay asociaci´on positiva entre las variables (si
-r > 0); o asociaci´on negativa entre ellas (si r < 0).
-7. r = 0,90 indica que los puntos est´an ubicados muy cerca de una recta
-creciente, r = 0,80 indica que los puntos est´an cerca, pero no tanto,
+6. El signo de $r$ indica que hay asociación positiva entre las variables (si
+$r > 0$); o asociación negativa entre ellas (si $r < 0$).
+7. $r = 0,90$ indica que los puntos están ubicados muy cerca de una recta
+creciente, $r = 0,80$ indica que los puntos están cerca, pero no tanto,
 de una recta creciente.
-8. r no depende de las unidades en que son medidas las variables
-(mil´ımetros, cent´ımetros, metros o kil´ometros, por ejemplo) .
-9. Los roles de X e Y son sim´etricos para el c´alculo de r.
-10. Cuidado: el coeficiente de correlaci´on de Pearson es muy sensible a
-observaciones at´ıpicas. Hay que hacer siempre un scatter plot de los
-datos antes de resumirlos con r.
+8. $r$ no depende de las unidades en que son medidas las variables
+(milímetros, centímetros, metros o kilómetros, por ejemplo) .
+9. Los roles de $X$ e $Y$ son simétricos para el cálculo de $r$.
+10. **Cuidado**: el coeficiente de correlación de Pearson es muy sensible a observaciones atípicas. Hay que hacer siempre un scatter plot de los
+datos antes de resumirlos con $r$.
 
-La temperatura corporal de mam´ıferos y p´ajaros tiende a fluctuar durante
-el d´ıa seg´un un ritmo circadiano regular. En un estudio 1
-se registra la
-temperatura corporal de 10 ardillas ant´ılopes cada 6 minutos a lo largo de
-10 d´ıas consecutivos en condiciones de laboratorio. Elegimos una ardilla y
-promediamos las temperaturas de los 10 d´ıas para obtener un conjunto de
-datos de 24 x 10 observaciones. Los autores trataban de contestar a la
+### Ejemplo
+La temperatura corporal de mamíferos y pájaros tiende a fluctuar durante
+el díkka según un ritmo circadiano regular. En un estudio $1$ se registra la temperatura corporal de $10$ ardillas antílopes cada $6$ minutos a lo largo de $10$ días consecutivos en condiciones de laboratorio. Elegimos una ardilla y promediamos las temperaturas de los $10$ días para obtener un conjunto de
+datos de $24 \times 10$ observaciones. Los autores trataban de contestar a la
 pregunta:
-¿Hay una asociaci´on entre la hora del d´ıa y la temperatura corporal?
-Para contestarla, tenemos dos estrategias.
-Calcular la correlaci´on entre la hora del d´ıa y la temperatura corporal
-de la ardilla
-Graficar ambas variables: horario y temperatura en un scatter plot
+¿Hay una asociación entre la hora del día y la temperatura corporal?\
+Para contestarla, tenemos dos estrategias:\
+- Calcular la correlación entre la hora del día y la temperatura corporal
+de la ardilla\
+- Graficar ambas variables: horario y temperatura en un scatter plot
 
 Xi = horario de la i´esima medici´on
 Yi = temperatura promedio a lo largo de 10 d´ıas de las 10 mediciones
