@@ -1,0 +1,45 @@
+---
+title: "Entregable01"
+author: "Peredo Leonel"
+output: pdf_document
+---
+
+El dataset que se encuentra en simple.csv corresponde a mediciones realizadas sobre una muestra de graduados universitarios de Argentina, elegidos al azar.
+
+```{r}
+data <- read.csv("simple.csv")
+nota <- data$nota
+salario <- data$salario
+```
+
+Para cada graduado se registró la nota obtenida en la materia “Estadística” de su carrera de grado (variable “nota”) y el salario por hora recibido en su primer empleo profesional (variable “salario”). Ajuste un modelo lineal simple (por cuadrados mínimos) para explicar el salario en función de la nota y conteste las siguientes preguntas: (las respuestas deben ser correctas al segundo decimal redondeado, use punto decimal)
+
+```{r}
+ajuste <- lm(salario~nota,data = data)
+summary(ajuste)
+```
+
+
+La ordenada al origen estimada es: 371.71
+
+La pendiente estimada resulta ser: 90.75
+
+```{r}
+x <- nota[9]
+371.71 + 90.75*x
+```
+
+El salario estimado para el graduado 9 es: 825.46
+
+```{r}
+x <- nota[14]
+371.71 + 90.75*x
+salario[14]
+salario[14] - (371.71 + 90.75*x)
+```
+
+El residuo para el graduado 14 es: 4.84
+
+El estimador de $\sigma$ es: 45.15
+
+El estimador del desvío estándar del estimador de la pendiente es: 18.14
